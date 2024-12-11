@@ -1,0 +1,30 @@
+{
+  "name": "qase-playwright",
+  "version": "2.0.16",
+  "description": "A demo repository with Examples, for troubleshooting problems and for feature requests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "QASE_MODE=testops npx playwright test tests/examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cskmnrpt/qase-playwright.git"
+  },
+  "keywords": [
+    "qase-playwright",
+    "qaseio",
+    "qase-tms",
+    "qase-javascript"
+  ],
+  "author": "Qase Support",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/cskmnrpt/qase-playwright/issues"
+  },
+  "homepage": "https://github.com/cskmnrpt/qase-playwright#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "dotenv": "^16.4.7",
+    "playwright-qase-reporter": "^2.0.16"
+  }
+}
