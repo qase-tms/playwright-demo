@@ -4,7 +4,7 @@ import { qase } from 'playwright-qase-reporter';
 
 test('test', async () => {
   // upload files by path
-  qase.attach({ paths: '/Users/manju/qase-tms/examples/qase-playwright/tests/examples/attachments/mini.png' });
+  qase.attach({ paths: './attachments/test-file.txt' });
   expect(true).toBe(true);
 });
 
