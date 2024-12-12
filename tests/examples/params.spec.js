@@ -6,7 +6,6 @@ const testCases = [
   { username: '@bob', browser: 'Firefox' },
   { username: '@charlie', browser: 'Firefox' },
 ];
-//].forEach(({ username, browser }) => {
 
 testCases.forEach(({ username }) => {
   test(`Test login with ${username}`, async () => {
