@@ -4,6 +4,11 @@ import { markdownContent } from './markdownContent';
 
 test.describe("Test cases with field: Priority", () => {
 
+    /*
+     * Meta data such as Priority, Severity fields, and Description / pre-conditions can be updated from code.
+     * This enables you to manage test cases from code directly.
+     */
+
   test("Priority = low", () => {
     qase.fields({ 'priority': 'low' });
     expect(true).toBe(true);
@@ -52,7 +57,6 @@ test.describe("Test cases with field: Severity", () => {
     expect(true).toBe(true);
   });
 })
-
 
 
 test.describe("Test cases with Description, Pre & Post Conditions", () => {

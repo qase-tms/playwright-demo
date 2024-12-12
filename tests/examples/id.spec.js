@@ -10,11 +10,6 @@ test(qase(1, "Defining Id: Format 1"), () => {
 });
 
 
-*/// Delete line, to uncomment 
-
-
-
-/* Delete line, to uncomment 
 // Please, change the Id from `2` to any case Id present in your project before uncommenting the test.
  
 
@@ -24,12 +19,23 @@ test("Defining Id: Format 2", () => {
 });
 
 
+// Please, change the Id from `2` to any case Id present in your project before uncommenting the test.
+
+
+test('Defining Id: Format 3',
+  {
+    annotation: { type: 'QaseID', description: '3' },
+  },
+  async () => {
+    expect(true).toBe(true);
+  });
+
 */// Delete line, to uncomment 
 
 
 
 /* 
-    The two tests showcase the two different formats for defining case ids:
+    The three tests showcase the different formats for defining case ids:
   
   1. Inline with the test function: [Recommended]
 
@@ -48,4 +54,16 @@ test("Defining Id: Format 2", () => {
 
      This method allows setting the case ID later inside the test body and is more elegant.
 
+
+  3. In the test's annotations
+
+      test('Defining Id: Format 3',
+        {
+          annotation: { type: 'QaseID', description: '<id>' },
+        },
+          async () => {
+            expect(true).toBe(true);
+       });
+
+     Defines the case ID and metadata upfront, linking it directly to the test for better context management.
 */

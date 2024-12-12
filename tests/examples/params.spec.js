@@ -11,6 +11,9 @@ testCases.forEach(({ username }) => {
   test(`Test login with ${username}`, async () => {
     qase.title("Verify if user is able to login.");
 
+      /*
+       * Instead of creating three separate test cases in Qase, this method will add a 'Username' parameter, with three values. 
+       */
     qase.parameters({ 'Username': username }); 
 
     expect(true).toBe(true);
@@ -19,16 +22,17 @@ testCases.forEach(({ username }) => {
 
 testCases.forEach(({ username, browser }) => {
   test(`Test login with ${username} using qase.groupParameters`, async () => {
-    // Set the test title
     qase.title("Verify if user is able to login with grouped parameters.");
 
-    // Group parameters for better organization
+      /*
+       * Here, instead of testing three users' login across all browsers, you can specify combinations that makes sense for you.
+       */
+
     qase.groupParameters({
       'Browser': browser,
       'Username': username,
     });
 
-    // Assertion for demonstration purposes
     expect(true).toBe(true);
   });
 });

@@ -3,6 +3,8 @@ import { qase } from 'playwright-qase-reporter';
 
 
 test('Test result with attachment', async () => {
+    
+     // To attach a single file
   qase.attach({ paths: './tests/examples/attachments/test-file.txt' });
     
     /* 
@@ -15,4 +17,3 @@ test('Test result with attachment', async () => {
 
   expect(true).toBe(true);
 });
-
