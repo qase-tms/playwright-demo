@@ -33,7 +33,6 @@ jobs:
       env:
         QASE_TESTOPS_API_TOKEN: ${{ env.QASE_TESTOPS_API_TOKEN }}
 
-    steps:
     - name: Checkout repository
       uses: actions/checkout@v2
 

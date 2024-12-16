@@ -9,7 +9,7 @@ on:
       - syntax  # Trigger on pull requests to the 'main' branch.
 
 env:
-  QASE_TESTOPS_API_TOKEN: {{ secrets.QASE_API_TOKEN }}
+  QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
   QASE_TESTOPS_PROJECT: 'QD'
 
 jobs:
