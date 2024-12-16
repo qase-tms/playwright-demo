@@ -10,11 +10,13 @@ on:
 
 env:
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
-  env_var: ${{ vars.QASE.TESTOPS.PROJECT }}
 
 jobs:
   test:
     runs-on: ubuntu-latest
+
+    env:
+      QASE_TESTOPS_PROJECT: ${{ vars.QASE.TESTOPS.PROJECT }}
 
     steps:
     - name: Checkout repository
