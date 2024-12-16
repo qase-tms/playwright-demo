@@ -1,6 +1,6 @@
 # qase-playwright
 
-This is an example repository with tests in the `tests/examples/` directory. To run the tests:
+This is an example repository with tests in the `tests/examples/` directory. To run the tests -
 
 1. Clone the repository with `git clone https://github.com/cskmnrpt/qase-playwright.git`.
 To clone a different branch, other than `main`, use this command - `git clone --single-branch --branch <branch-name> https://github.com/cskmnrpt/qase-playwright.git`
