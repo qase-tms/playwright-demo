@@ -38,7 +38,7 @@ jobs:
       id: set_title
       run: |
         COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
-        echo "QASE_TESTOPS_RUN_TITLE=[qase-playwright: $COMMIT_MESSAGE]" >> $GITHUB_ENV
+        echo "QASE_TESTOPS_RUN_TITLE=qase-playwright: $COMMIT_MESSAGE" >> $GITHUB_ENV
 
     - name: Run Playwright tests
       run: |
