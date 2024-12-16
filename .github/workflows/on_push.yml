@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main  # Trigger on pushes to the 'main' branch. Change this to your default branch if different.
+
   pull_request:
     branches:
       - main  # Trigger on pull requests to the 'main' branch.
+
+  workflow_dispatch:
 
 env:
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
@@ -14,9 +17,6 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-
-    env:
-      QASE_TESTOPS_PROJECT: ${{ vars.QASE.TESTOPS.PROJECT }}
 
     steps:
     - name: Checkout repository
