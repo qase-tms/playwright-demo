@@ -5,7 +5,7 @@ import { markdownContent } from './markdownContent';
 test.describe("Test cases with field: Priority", () => {
 
     /*
-     * Meta data such as Priority, Severity fields, and Description / pre-conditions can be updated from code.
+     * Meta data such as Priority, Severity, Layer fields, Description, and  pre-conditions can be updated from code.
      * This enables you to manage test cases from code directly.
      */
 
@@ -54,6 +54,24 @@ test.describe("Test cases with field: Severity", () => {
 
   test("Severity = blocker", () => {
     qase.fields({ 'severity': 'blocker' });
+    expect(true).toBe(true);
+  });
+})
+
+test.describe("Test cases with field: Layer", () => {
+
+  test("Layer = e2e", () => {
+    qase.fields({ 'layer': 'e2e' });
+    expect(true).toBe(true);
+  });
+
+  test("Layer = api", () => {
+    qase.fields({ 'layer': 'api' });
+    expect(true).toBe(true);
+  });
+
+  test("Layer = unit", () => {
+    qase.fields({ 'layer': 'unit' });
     expect(true).toBe(true);
   });
 })
