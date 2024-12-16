@@ -6,3 +6,10 @@ test("Test with a defined suite", () => {
   expect(true).toBe(true);
 });
 
+
+test("Test within multiple levels of suite" , () => {
+  qase.suite("Application\tAuthentication\tLogin\tEdge_case");
+    // A `\t` is used for dividing each suite name
+  expect(true).toBe(true);
+});
+
