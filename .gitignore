@@ -4,3 +4,8 @@
 # Qase files
 qase.config.json
 
+# Playwright files
+logs
+node_modules
+test-results
+playwright-report

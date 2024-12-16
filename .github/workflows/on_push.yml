@@ -1,16 +1,16 @@
-name: Playwright Tests
+name: Example tests
 
 on:
   push:
     branches:
-      - syntax  # Trigger on pushes to the 'main' branch. Change this to your default branch if different.
+      - main  # Trigger on pushes to the 'main' branch. Change this to your default branch if different.
   pull_request:
     branches:
-      - syntax  # Trigger on pull requests to the 'main' branch.
+      - main  # Trigger on pull requests to the 'main' branch.
 
 env:
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
-  QASE_TESTOPS_PROJECT: 'QD'
+  QASE_TESTOPS_PROJECT: ${{ env.QASE.TESTOPS.PROJECT }}
 
 jobs:
   test:
@@ -18,12 +18,13 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'  # Use the version of Node.js you need
+        node-version: '18'
+        cache: 'npm' 
 
     - name: Install dependencies
       run: |
@@ -31,4 +32,4 @@ jobs:
 
     - name: Run Playwright tests
       run: |
-        QASE_MODE='testops' npx playwright test
+        npm test

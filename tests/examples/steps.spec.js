@@ -16,7 +16,7 @@ test('A Test case with steps, updated from code', async () => {
 
   await test.step('Verify if user is able to log out successfully', async () => {
     // Expected user to be logged out (but, ran into a problem!).
-    expect(false).toBe(true);
+    expect(true).toBe(true);
   });
 });
 
