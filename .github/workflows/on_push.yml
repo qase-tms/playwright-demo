@@ -36,9 +36,10 @@ jobs:
 
     - name: Get run title
       id: set_title
-      run: |
+      run: |        
+        BRANCH_NAME=${GITHUB_REF##*/}
         COMMIT_MESSAGE=$(git log -1 --pretty=format:%s)
-        echo "QASE_TESTOPS_RUN_TITLE=qase-playwright: $COMMIT_MESSAGE" >> $GITHUB_ENV
+        echo "QASE_TESTOPS_RUN_TITLE=qase-playwright@$BRANCH_NAME: $COMMIT_MESSAGE" >> $GITHUB_ENV
 
     - name: Run Playwright tests
       run: |
