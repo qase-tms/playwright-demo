@@ -10,7 +10,7 @@ on:
 
 env:
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
-  QASE_TESTOPS_PROJECT: ${{ env.QASE.TESTOPS.PROJECT }}
+  QASE_TESTOPS_PROJECT: ${{ vars.QASE.TESTOPS.PROJECT }}
 
 jobs:
   test:
