@@ -1,30 +1,27 @@
-import { test, expect } from '@playwright/test';
-import { qase } from 'playwright-qase-reporter';
+import { test, expect } from "@playwright/test";
+import { qase } from "playwright-qase-reporter";
 
-
+test.describe("Example: title.spec.js", () => {
   test("Test without qase.title() method", () => {
-
-      /* 
-       * Here, we're are not using a qase.title() method
-       * Given, you have "Auto-create cases" option enabled for this project.
-       * A new test will be created in Qase, with the test's title.
-       */
+    /*
+     * Here, we're are not using a qase.title() method
+     * Given, you have "Auto-create cases" option enabled for this project.
+     * A new test will be created in Qase, with the test's title.
+     */
 
     expect(true).toBe(true);
   });
-
 
   test("This won't appear in Qase", () => {
     qase.title("This text will be the title of the test, in Qase");
 
-      /* 
-       * Here, the Qase Test case's title will be taken from qase.title() method.
-       */
+    /*
+     * Here, the Qase Test case's title will be taken from qase.title() method.
+     */
 
     expect(true).toBe(true);
   });
-
-
+});
 
 /*
  *
@@ -43,5 +40,4 @@ import { qase } from 'playwright-qase-reporter';
  *     =>   Since, there's no link between the Qase test case and this test, changing the title will lead to
  *          a new case being created in your Project repository.
  *
-*/
-
+ */

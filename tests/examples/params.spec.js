@@ -1,38 +1,44 @@
-import { test, expect } from '@playwright/test';
-import { qase } from 'playwright-qase-reporter'; 
+import { test, expect } from "@playwright/test";
+import { qase } from "playwright-qase-reporter";
 
 const testCases = [
-  { username: '@alice', browser: 'Chromium' },
-  { username: '@bob', browser: 'Firefox' },
-  { username: '@charlie', browser: 'Firefox' },
+  { browser: "Chromium", username: "@alice", password: "123" },
+  { browser: "Firefox", username: "@bob", password: "456" },
+  { browser: "Webkit", username: "@charlie", password: "789" },
 ];
 
-testCases.forEach(({ username }) => {
-  test(`Test login with ${username}`, async () => {
-    qase.title("Verify if user is able to login.");
+test.describe("Example param.cy.js\tSingle Parameter", () => {
+  testCases.forEach(({ browser }) => {
+    test(`Test login with ${browser}`, () => {
+      qase.title("Verify if login page loads successfully");
 
       /*
-       * Instead of creating three separate test cases in Qase, this method will add a 'Username' parameter, with three values. 
+       * Instead of creating three separate test cases in Qase, this method will add a 'browser' parameter, with three values.
        */
-    qase.parameters({ 'Username': username }); 
 
-    expect(true).toBe(true);
+      qase.parameters({ Browser: browser });
+
+      expect(true).toBe(true);
+    });
   });
 });
 
-testCases.forEach(({ username, browser }) => {
-  test(`Test login with ${username} using qase.groupParameters`, async () => {
-    qase.title("Verify if user is able to login with grouped parameters.");
+test.describe("Example param.cy.js\tGroup Parameter", () => {
+  testCases.forEach(({ username, password }) => {
+    test(`Test login with ${username} using qase.groupParameters`, () => {
+      qase.title("Verify if user is able to login with their username.");
 
       /*
-       * Here, instead of testing three users' login across all browsers, you can specify combinations that makes sense for you.
+       * Here, we're grouping the username and password parameters to track them together, as a set of parameters for the test.
+       * This will show the username and password combinations for the test.
        */
 
-    qase.groupParameters({
-      'Browser': browser,
-      'Username': username,
-    });
+      qase.groupParameters({
+        Username: username,
+        Password: password,
+      });
 
-    expect(true).toBe(true);
+      expect(true).toBe(true);
+    });
   });
 });

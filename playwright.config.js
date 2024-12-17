@@ -1,9 +1,9 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   reporter: [
     [
-      'playwright-qase-reporter',
+      "playwright-qase-reporter",
       {
         /*
         // You can define the reporter options here, or in a separate `qase.config.json` file.
