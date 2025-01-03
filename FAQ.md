@@ -6,7 +6,7 @@ For example, if you have three projects defined for three different browsers—C
 
 This setup is not ideal, as the same test cases are being duplicated for each browser. Ideally, we should have a single set of test cases, but just run them across different browsers, without the need to create separate test cases for every project.
 
-![Screenshot](../images/screenshot1.png)
+![Screenshot](./images/screenshot1.png)
 
 
 ### Cause:
