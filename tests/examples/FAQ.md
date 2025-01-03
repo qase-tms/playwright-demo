@@ -2,5 +2,5 @@
 
 ## Qase ID:
 
-1. For tests annotated with `test.skip` reporter creating a new test case for skipped tests rather than linking the skipped results with the existing test cases. Read more [here](tests/examples/attachments/FAQ/skipped_test_results_creatng_new_test_cases.md)
+1. For tests annotated with `test.skip` reporter creating a new test case for skipped tests rather than linking the skipped results with the existing test cases. Read more [here](https://github.com/cskmnrpt/qase-playwright/blob/Vikas---Playwright/tests/examples/attachments/FAQ/skipped_test_results_creatng_new_test_cases.md)
 
