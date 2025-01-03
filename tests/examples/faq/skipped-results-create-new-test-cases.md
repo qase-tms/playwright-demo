@@ -35,4 +35,4 @@ For example, you can add `monospace` characters like this.
 You can also add links like this. [Click here](https://qase.canny.io/bugs/p/the-background-isnt-transparent-in-uploaded-project-logo-of-png-type).
 
 Images are added like this.
-!(https://sitechecker.pro/wp-content/uploads/2023/05/URL-meaning.jpg)
+![An image](https://sitechecker.pro/wp-content/uploads/2023/05/URL-meaning.jpg)
