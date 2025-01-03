@@ -1,6 +1,6 @@
-The new test cases are being created when user annotate test with `test.skip` for skipping the test cases.
+## The new test cases are being created when user annotate test with `test.skip` for skipping the test cases.
 
-This is primarliy related to the syntax used to define the `Qase ID`. When `Qase ID` is defined within the body of the test, it skips onto the next test without reading that test's body where the Id is present.
+This is primarliy related to the syntax used to define the `Qase ID`. When `Qase ID` is defined within the body of the test, it skips onto the next test without reading that test's body where the Id is present. Since, qaseID is skipped it wont be able to link it with the existing test case and rather create a new test case.
 
 For example -
 ``` javascript
@@ -15,9 +15,9 @@ test.skip('Buyer login and checkout using balance', async ({ page }) => {
   console.log(`Test skipped with Qase ID: ${qaseId}`);
 });
 ```
-in the above code the qaseID would be skipped as it is inside the bosy if the test case. 
+In the above code the qaseID would be skipped as it is inside the body of the test case. 
 
-The correct format for this would be like this -
+The correct format is to include the `Qase ID` outside of the test body as shown in the code below -
 
 ``` javascript
 
@@ -37,4 +37,4 @@ test.describe('Example: id.spec.js', () => {
     });
 });
 ```
-
+In the above code, as `Qase ID` is mentioned outside the test body, it will not be skipped and hence the result would be link to the existing test case as skipped.
