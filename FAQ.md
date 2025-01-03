@@ -18,7 +18,7 @@ However, when we use Playwright projects, the reporter processes the results for
 
 If you have the Qase ID specified, the projects are executed one after the other, the test case keeps getting overwritten. This is not ideal, as once the test run is completed it is difficult to determine which run corresponds to which browser/project.
 
-![Screenshot](../images/screenshot2.png)
+![Screenshot](./images/screenshot2.png)
 
 
 ### Workaround:
@@ -28,9 +28,9 @@ For now, the workaround would be to use Qase parameterized tests. You can define
 
 Below is an example demonstrating how to implement this:
 
-```javascript
-{{#include ../tests/examples/params.spec.js}}
+```html
+<script src="./tests/examples/params.spec.js"></script>
 ```
 <br>
 
-![Screenshot](../images/screenshot3.png)
+![Screenshot](./images/screenshot3.png)
