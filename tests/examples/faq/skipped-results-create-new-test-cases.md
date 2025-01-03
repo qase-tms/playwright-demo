@@ -1,3 +1,6 @@
+- [x] Completed task
+- [ ] Incomplete task
+
 # Problem
 When i have this...
 Then this happens...
@@ -8,6 +11,9 @@ This happens because, xyz...
 
 # Solution
 This is the solution, please do XYZ
+
+> This is a blockquote.
+> You can have multiple lines.
 
 **Please, format your tests like so**:
 
@@ -21,6 +27,17 @@ describe("Example: ignore.spec.js", () => {
   });
 });
 ```
+----
+
+
+
+
+| Column 1 | Column 2 | Column 3 |
+|----------|----------|----------|
+| Row 1    | Data     | More     |
+| Row 2    | Data     | More     |
+
+
 *Italic, format your tests like so*:
 
 1. Number one
