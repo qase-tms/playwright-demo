@@ -1,6 +1,6 @@
 ## The new test cases are being created when user annotate test with `test.skip` for skipping the test cases.
 
-This is primarliy related to the syntax used to define the `Qase ID`. When `Qase ID` is defined within the body of the test, it skips onto the next test without reading that test's body where the Id is present. Since, qaseID is skipped it wont be able to link it with the existing test case and rather create a new test case.
+This is primarliy related to the syntax used to define the `Qase ID`. When `Qase ID` is defined within the body of the test, it skips onto the next test without reading that test's body where the Id is present. Since, `QaseID` is skipped it wont be able to link it with the existing test case and rather create a new test case.
 
 For example -
 ``` javascript
