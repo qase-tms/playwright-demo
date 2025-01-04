@@ -3,6 +3,7 @@
 
 # Qase files
 qase.config.json
+build/qase-report
 
 # Playwright files
 node_modules
