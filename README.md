@@ -1,7 +1,7 @@
 # qase-playwright
 
 1. [Syntax Examples](syntax-examples)
-2. [Frequently asked Questions](frequently-asked-questions)
+2. [Frequently Asked Questions](frequently-asked-questions)
 
 
 ---
