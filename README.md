@@ -24,7 +24,4 @@ This is an example repository with tests in the `tests/examples/` directory. To 
 ---
 ### Frequently Asked Questions
 1. Test cases are duplicated in the repository when using Playwright Projects. [[Read more]](./FAQ/projects-result-in-duplicate-cases.md)
-# Frequently Asked Question:
 2. For tests annotated with `test.skip` it is creating a new test case for skipped tests rather than linking the skipped results with the existing test cases. [[Read more]](./FAQ/projects-result-in-duplicate-cases.md)
-
-
