@@ -23,6 +23,4 @@ This is an example repository with tests in the `tests/examples/` directory. To 
 
 ---
 ### Frequently Asked Questions
-Click on any question to read more.
-
 1. Test cases are duplicated in the repository when using Playwright Projects. [[Read more]](./FAQ/projects-result-in-duplicate-cases.md)
