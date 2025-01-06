@@ -13,7 +13,7 @@ import { test } from '@playwright/test';
 import { qase } from 'playwright-qase-reporter';
 
 test.skip('Sample test title', async ({ page }) => {
-  qaseId = 1; 
+  qase.id(1); 
   // Add your test logic here
 });
 ```
