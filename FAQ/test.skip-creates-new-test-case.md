@@ -12,13 +12,13 @@ For example:
 import { test } from '@playwright/test';
 import { qase } from 'playwright-qase-reporter';
 
-test.skip('Sample test title', async ({ page }) => {
+test.skip('Example test title', async ({ page }) => {
   qase.id(1); 
-  // Add your test logic here
+  // your test logic here
 });
 ```
 
-In the above code, the `qaseId` would be skipped because it is inside the body of the test case.
+In the above code, the `qase.id()` method would be skipped because it is inside the body of the test case.
 
 ## Solution
 
@@ -28,9 +28,9 @@ The correct approach is to place the `Qase ID` outside the test body, as shown i
 import { test } from '@playwright/test';
 import { qase } from 'playwright-qase-reporter';
 
-test.skip(qase(1, 'Sample test title'), async ({ page }) => {
-  // Add your test logic here
+test.skip(qase(1, 'Example test title'), async ({ page }) => {
+  // your test logic here
 });
 ```
 
-In this code, since the `Qase ID` is placed outside the test body, it will not be skipped. As a result, the test case will be linked properly and marked as `skipped` .
+In this code, since the `Qase ID` is placed outside the test body, it will not be skipped. As a result, the test case will be linked properly and marked as `skipped`. Learn other ways of defining the Qase Id [here](../tests/examples/id.spec.js).
