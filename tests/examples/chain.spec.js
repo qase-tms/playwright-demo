@@ -6,7 +6,7 @@ test.describe("Example: chain.spec.js", () => {
     qase
       .title("Use qase annotation in a chain")
       .fields({
-        severity: "high",
+        severity: "critical",
         priority: "medium",
         layer: "api",
         description: `Code it quick, fix it slow,
