@@ -27,4 +27,11 @@ export default defineConfig({
       },
     ],
   ],
+  use: {
+    screenshot: "only-on-failure", // options: 'on', 'off', 'only-on-failure'
+    video: "on", // options: 'on', 'off', 'on-first-retry'
+    viewport: { width: 1280, height: 720 },
+  },
+
+  outputDir: "test-results/",
 });
