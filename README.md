@@ -24,4 +24,4 @@ This is an example repository with tests in the `tests/examples/` directory. To 
 ---
 ### Frequently Asked Questions
 1. Test cases are duplicated in the repository when using Playwright Projects. [[Read more]](./FAQ/projects-result-in-duplicate-cases.md)
-2. For Test with `test.skip` and Qase ID defined, a new test case is created rather than linking the skipped results with the existing test cases. [[Read more]](./FAQ/test.skip-creates-new-test-case.md)
+2. For Test with `test.skip` and Qase ID defined, a new test case is created rather than linking the skipped results with the existing test cases. [[Read more]](./FAQ/test.skip-creates-new-test-case.md).
