@@ -1,4 +1,4 @@
-name: Trigger from Qase (DEMO)
+name: Combined
 on:
   workflow_dispatch:
     inputs:
