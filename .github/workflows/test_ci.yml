@@ -22,7 +22,7 @@ env:
   QASE_API_BASE_URL: ${{ inputs.qase_api_base_url || vars.QASE_API_BASE_URL }}
   QASE_TESTOPS_PROJECT: ${{ inputs.qase_project_code || vars.QASE_TESTOPS_PROJECT }}
   QASE_TESTOPS_RUN_ID: ${{ inputs.qase_run_id }}
-  QASE_TESTOPS_RUN_COMPLETE: true
+  QASE_TESTOPS_RUN_ID: ${{ inputs.qase_run_id || '' }}
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
   QASE_MODE: 'testops'
 
