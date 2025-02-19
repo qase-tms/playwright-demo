@@ -21,7 +21,7 @@ on:
 env:
   QASE_API_BASE_URL: ${{ inputs.qase_api_base_url || vars.QASE_API_BASE_URL }}
   QASE_TESTOPS_PROJECT: ${{ inputs.qase_project_code || vars.QASE_TESTOPS_PROJECT }}
-  QASE_TESTOPS_RUN_ID: ${{ inputs.qase_run_id || '' }}
+  QASE_RUN_ID: ${{ inputs.qase_run_id }}
   QASE_TESTOPS_RUN_COMPLETE: true
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
   QASE_MODE: 'testops'
@@ -31,15 +31,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Unset QASE_TESTOPS_RUN_ID if it's 'none'
-        if: ${{ env.QASE_TESTOPS_RUN_ID == '' }}
-        run: |
-          echo "QASE_TESTOPS_RUN_ID is 'none', unsetting it"
-          unset QASE_TESTOPS_RUN_ID
 
       - uses: cskmnrpt/qase-link-run@v2
         env:
           QASE_TESTOPS_API_TOKEN: ${{ env.QASE_TESTOPS_API_TOKEN }}
+          QASE_TESTOPS_RUN_ID: ${{env.QASE_RUN_ID}}
         continue-on-error: true
 
       - name: Checkout repository
@@ -48,6 +44,13 @@ jobs:
       - name: Install dependencies
         run: |
           npm install
+
+      - name: Check QASE_RUN_ID and set environment variable
+        id: check-run-id
+        run: |
+          if [[ -n "${{ secrets.QASE_RUN_ID }}" && "${{ secrets.QASE_RUN_ID }}" =~ ^[0-9]+$ ]]; then
+            echo "QASE_TESTOPS_RUN_ID=${{ secrets.QASE_RUN_ID }}" >> $GITHUB_ENV
+          fi
 
       - name: Run Playwright tests
         run: |
