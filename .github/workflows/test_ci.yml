@@ -48,8 +48,11 @@ jobs:
       - name: Check QASE_RUN_ID and set environment variable
         id: check-run-id
         run: |
-          if [[ -n "${{ secrets.QASE_RUN_ID }}" && "${{ secrets.QASE_RUN_ID }}" =~ ^[0-9]+$ ]]; then
+          # Ensure QASE_RUN_ID is not empty and is an integer
+          if [[ -n "${{ env.QASE_RUN_ID }}" && "${{ env.QASE_RUN_ID }}" =~ ^[0-9]+$ ]]; then
             echo "QASE_TESTOPS_RUN_ID=${{ env.QASE_RUN_ID }}" >> $GITHUB_ENV
+          else
+            echo "QASE_RUN_ID is either empty or not an integer"
           fi
 
       - name: Run Playwright tests
