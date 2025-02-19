@@ -35,7 +35,7 @@ jobs:
       - uses: cskmnrpt/qase-link-run@v2
         env:
           QASE_TESTOPS_API_TOKEN: ${{ env.QASE_TESTOPS_API_TOKEN }}
-          QASE_TESTOPS_RUN_ID: ${{env.QASE_RUN_ID}}
+          QASE_TESTOPS_RUN_ID: ${{ env.QASE_RUN_ID }}
         continue-on-error: true
 
       - name: Checkout repository
@@ -49,7 +49,7 @@ jobs:
         id: check-run-id
         run: |
           if [[ -n "${{ secrets.QASE_RUN_ID }}" && "${{ secrets.QASE_RUN_ID }}" =~ ^[0-9]+$ ]]; then
-            echo "QASE_TESTOPS_RUN_ID=${{ secrets.QASE_RUN_ID }}" >> $GITHUB_ENV
+            echo "QASE_TESTOPS_RUN_ID=${{ env.QASE_RUN_ID }}" >> $GITHUB_ENV
           fi
 
       - name: Run Playwright tests
