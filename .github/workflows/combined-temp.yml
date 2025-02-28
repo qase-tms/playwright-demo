@@ -1,11 +1,10 @@
-name: Combined Temporary
+name: Run Tests with Tags Qase2
 
 on:
-
   workflow_dispatch:
     inputs:
       branch:
-        default: "main"
+        default: "qase"
         required: true
         type: string
       runner:
@@ -25,7 +24,8 @@ on:
         type: string
         required: false
       qase_report:
-        description: "Enabled/disabled reporting to Qase"
+        description: "Enable/disable reporting to Qase"
+        type: boolean
         required: false
       qase_project_code:
         description: "Qase project code"
@@ -41,42 +41,77 @@ on:
         required: false
 
 env:
+  LOCATION: ./${{ inputs.branch }}
+  UPLOAD_JIRA: ${{ vars.UploadJiraResults }}
   QASE_API_BASE_URL: ${{ inputs.qase_api_base_url || vars.QASE_API_BASE_URL }}
-  QASE_TESTOPS_PROJECT: ${{ inputs.qase_project_code || vars.QASE_TESTOPS_PROJECT }}
+  QASE_TESTOPS_PROJECT: ${{ inputs.qase_project_code || vars.QASE_TESTOPS_PROJECT_MIMS }}
   QASE_RUN_ID: ${{ inputs.qase_run_id }}
   QASE_TESTOPS_RUN_COMPLETE: true
   QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
   QASE_MODE: 'testops'
+  QASE_DEBUG: true
+
+  jiraTestPlanKey: ${{ vars.MIMSJIRATESTPLANKEY }}
+  jiraProjectKey: ${{ vars.MIMSJIRAPROJECTKEY }}
+  jiraTestExecKey: ${{ vars.MIMSJIRATESTEXECUTION }}
+  storeJiraXML: true
+  storeJiraXMLRunName: mims\MIMS_NZ_Misc_Tests\${{ github.run_number }}-${{ github.run_attempt }}
+  jiraTestNameInculdeTag: true
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  run:
+    runs-on: [self-hosted, "${{ inputs.runner }}"]
+    defaults:
+      run:
+        working-directory: ${{ env.LOCATION }}
 
     steps:
-
-      - uses: cskmnrpt/qase-link-run@v2
+      - name: Link Qase Run
+        uses: cskmnrpt/qase-link-run@v2
         env:
           QASE_TESTOPS_API_TOKEN: ${{ env.QASE_TESTOPS_API_TOKEN }}
           QASE_TESTOPS_RUN_ID: ${{ env.QASE_RUN_ID }}
-        continue-on-error: true
+        continue-on-error: true # when test run is not specified, create a new and push results to it
 
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          path: ${{ env.LOCATION }}
+          clean: false
+          ref: ${{ inputs.branch }}
 
-      - name: Install dependencies
-        run: |
-          npm install
-
-      - name: Check QASE_RUN_ID and set environment variable
+      - name: If QASE_RUN_ID is a non-empty integer, then set QASE_TESTOPS_RUN_ID
         id: check-run-id
+        shell: cmd
         run: |
-          # Ensure QASE_RUN_ID is not empty and is an integer
-          if [[ -n "${{ env.QASE_RUN_ID }}" && "${{ env.QASE_RUN_ID }}" =~ ^[0-9]+$ ]]; then
-            echo "QASE_TESTOPS_RUN_ID=${{ env.QASE_RUN_ID }}" >> $GITHUB_ENV
-          else
-            echo "QASE_RUN_ID is either empty or not an integer"
-          fi
+          @echo off
+          REM Check if QASE_RUN_ID is defined
+          if defined QASE_RUN_ID (
+            REM Verify that QASE_RUN_ID contains only digits
+            echo %QASE_RUN_ID% | findstr /R "^[0-9][0-9]*$" >nul
+            if %errorlevel%==0 (
+              echo QASE_TESTOPS_RUN_ID=%QASE_RUN_ID%>>%GITHUB_ENV%
+            ) else (
+              echo QASE_RUN_ID is either empty or not an integer
+            )
+          ) else (
+            echo QASE_RUN_ID is either empty or not an integer
+          )
 
-      - name: Run Playwright tests
+      - name: Run Tests
+        env:
+          GITHUB_API_TOKEN: "${{ secrets.GIT_API_TOKEN }}"
+          AHA_API_TOKEN: "${{ secrets.AHA_API_TOKEN }}"
+          AHA_UPLOAD_RESULTS: "${{ vars.AHA_UPLOAD_RESULTS }}"
+          AHA_MIMS_RELEASE: "${{ vars.AHA_MIMS_RELEASE }}"
+          AHA_MIMS_TEST_EXECUTION: "${{ vars.AHA_MIMS_TEST_EXECUTION }}"
+          AHA_MAINSTREET_RELEASE: "${{ vars.AHA_MIMS_RELEASE }}"
+          AHA_MAINSTREET_TEST_EXECUTION: "${{ vars.AHA_MIMS_TEST_EXECUTION }}"
+        id: firstRun
+        continue-on-error: ${{ inputs.rerunTestOnFail && !contains(fromJson(inputs.reRunBlackListTag), inputs.tags) }}
+        shell: cmd
         run: |
-          npm test
+          ${{ inputs.preScript }}
+          set country=${{ inputs.region }}
+          set timezone=${{ inputs.timeZone }}
+          mvn clean test -Dcucumber.filter.tags="@mims and @nz and @enquirymanagersearchsku"hell: cmd
