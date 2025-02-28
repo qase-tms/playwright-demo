@@ -21,23 +21,18 @@ on:
         type: string
       qase_api_base_url:
         description: "Qase API URL"
-        type: string
         required: false
       qase_report:
         description: "Enable/disable reporting to Qase"
-        type: boolean
         required: false
       qase_project_code:
         description: "Qase project code"
-        type: string
         required: false
       qase_run_id:
         description: "Qase Run ID"
-        type: number
         required: false
       qase_run_complete:
         description: "Qase Run autocomplete"
-        type: boolean
         required: false
 
 env:
