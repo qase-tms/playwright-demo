@@ -1,7 +1,8 @@
 # qase-playwright
 
-1. [Syntax Examples](syntax-examples)
-2. [Frequently Asked Questions](frequently-asked-questions)
+1. [Syntax Examples](#syntax-examples)
+2. [Frequently Asked Questions](#frequently-asked-questions)
+3. [Miscellaneous](#misc)
 
 
 ---
@@ -23,5 +24,9 @@ This is an example repository with tests in the `tests/examples/` directory. To 
 
 ---
 ### Frequently Asked Questions
-1. Test cases are duplicated in the repository when using Playwright Projects. [[Read more]](./FAQ/projects-result-in-duplicate-cases.md)
-2. For Test with `test.skip` and Qase ID defined, a new test case is created rather than linking the skipped results with the existing test cases. [[Read more]](./FAQ/test.skip-creates-new-test-case.md)
+1. Test cases are duplicated in the repository when using Playwright Projects. [Read more](./FAQ/projects-result-in-duplicate-cases.md)
+2. For Test with `test.skip` and Qase ID defined, a new test case is created rather than linking the skipped results with the existing test cases. [Read more](./FAQ/test.skip-creates-new-test-case.md)
+
+### Misc
+1. How to get the Qase Test run Id of the current run? [Read more](./FAQ/fetch-test-run-id-of-ongoing-run.md)
+
