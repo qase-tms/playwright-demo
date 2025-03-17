@@ -1,6 +1,6 @@
 # qase-playwright
 
-1. [Syntax Examples](#syntax-examples)
+1. [Syntax Examples](https://github.com/cskmnrpt/qase-playwright/tree/main/tests/examples)
 2. [Frequently Asked Questions](#frequently-asked-questions)
 3. [Miscellaneous](#misc)
 
