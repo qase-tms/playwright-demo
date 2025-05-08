@@ -2,7 +2,7 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   reporter: [
-    ["list"],
+    ['list'],
     [
       "playwright-qase-reporter",
       {
@@ -18,7 +18,7 @@ export default defineConfig({
           uploadAttachments: true,
           run: {
           //  id: 1,
-            title: "Your test run title",
+            title: `Regression run - ${new Date().toISOString()}`,
             description: "Automated Test run by Playwright",
             complete: true,
           },
