@@ -6,6 +6,7 @@ export default defineConfig({
     [
       "playwright-qase-reporter",
       {
+        environment: "prod"
         /*
         // You can define the reporter options here, or in a separate `qase.config.json` file.
         mode: 'testops',
