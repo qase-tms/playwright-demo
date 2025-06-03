@@ -1,7 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { qase } from "playwright-qase-reporter";
 
-/*// Delete line, to uncomment
 
 test.describe("Example: id.spec.js", () => {
   // Please, change the Id from `1` to any case Id present in your project before uncommenting the test.
@@ -30,7 +29,6 @@ test.describe("Example: id.spec.js", () => {
   );
 });
 
-*/ // Delete line, to uncomment
 
 /* 
     The three tests showcase the different formats for defining case ids:
