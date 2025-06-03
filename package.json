@@ -25,7 +25,7 @@
   "devDependencies": {
     "@playwright/test": "^1.49.1",
     "dotenv": "^16.4.7",
-    "playwright-qase-reporter": "^2.0.17",
+    "playwright-qase-reporter": "^2.1.2",
     "prettier": "^3.4.2"
   }
 }
