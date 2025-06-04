@@ -7,6 +7,12 @@ export default defineConfig({
       "playwright-qase-reporter",
       {
         environment: "prod"
+        framework: {
+          browser: {
+            addAsParameter: true,
+            parameterName: 'Browser',
+          }
+        }
         /*
         // You can define the reporter options here, or in a separate `qase.config.json` file.
         mode: 'testops',
