@@ -38,4 +38,4 @@ If the Qase ID is specified in the test, Qase ignores the test and suite titles 
 
 ## Solution?
 
-With the current implementation, the only way to avoid duplicates is by linking your test cases with a Qase ID. However, this causes all results to appear as retries, making it unclear which result corresponds to which project. Currently, there's no way to work around this problem.
+This problem is fixed with the `2.1.3` update of the reporter, more details [here](https://github.com/qase-tms/qase-javascript/blob/7bbfc98534f8d68686f8720ed32f094f60de8ce8/qase-playwright/changelog.md#playwright-qase-reporter213)
