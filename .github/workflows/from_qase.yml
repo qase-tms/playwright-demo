@@ -71,7 +71,7 @@ jobs:
           --token $QASE_API_TOKEN \
           --id $QASE_RUN_ID \
           --format junit \
-          --path "playwright-report/**/*.xml" \
+          --path "playwright-report/results.xml" \
           --verbose
         env:
           QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
