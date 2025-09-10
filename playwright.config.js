@@ -6,15 +6,15 @@ export default defineConfig({
     [
       "playwright-qase-reporter",
       {
-        environment: "prod"
+        environment: "prod",
 
         // If you use playwright projects, use these options to pass them as parameters.
-        framework: {
+        /*framework: {
           browser: {
             addAsParameter: true,
             parameterName: 'Browser',
           }
-        }
+        }*/
         /*
         // You can define the reporter options here, or in a separate `qase.config.json` file.
         mode: 'testops',
@@ -36,6 +36,13 @@ export default defineConfig({
       */
       },
     ],
+    // Added JUnit reporter
+    [
+      'junit',
+      {
+        outputFile: 'playwright-report/results.xml'
+      }
+    ]
   ],
 
   /*
