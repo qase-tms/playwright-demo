@@ -59,7 +59,7 @@ jobs:
 
       - name: Upload Playwright JUnit results to Qase
         run: |
-          qli testops result upload \
+          qasectl testops result upload \
           --project $QASE_PROJECT_CODE \
           --token $QASE_API_TOKEN \
           --id $QASE_RUN_ID \
