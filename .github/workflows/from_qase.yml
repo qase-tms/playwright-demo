@@ -47,10 +47,11 @@ jobs:
         with:
           go-version: "1.21"
 
-      - name: Install Qase CLI
+      - name: Install Qase CLI and set alias
         run: |
           go install github.com/qase-tms/qasectl@latest
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+          echo "alias qli='qasectl'" >> $GITHUB_ENV
 
       - name: Run Playwright tests and generate JUnit XML
         run: |
