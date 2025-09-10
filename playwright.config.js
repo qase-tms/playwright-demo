@@ -40,7 +40,7 @@ export default defineConfig({
     [
       'junit',
       {
-        outputFile: 'playwright-report/results.xml'
+        outputFile: 'playwright-report/results-<test-name>.xml'
       }
     ]
   ],
