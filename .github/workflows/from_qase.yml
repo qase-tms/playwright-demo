@@ -1,4 +1,5 @@
-name: Trigger from Qase
+name: Trigger Playwright Tests from Qase
+
 on:
   workflow_dispatch:
     inputs:
@@ -20,33 +21,49 @@ on:
 
 env:
   QASE_API_BASE_URL: ${{ inputs.qase_api_base_url }}
-  QASE_TESTOPS_PROJECT: ${{ inputs.qase_project_code }}
-  QASE_TESTOPS_RUN_ID: ${{ inputs.qase_run_id }}
-  QASE_TESTOPS_RUN_COMPLETE: true
-  QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
+  QASE_PROJECT_CODE: ${{ inputs.qase_project_code }}
+  QASE_RUN_ID: ${{ inputs.qase_run_id }}
+  QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
 
 jobs:
-  test:
+  run-playwright:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: cskmnrpt/qase-link-run@v2
-        env:
-          QASE_TESTOPS_API_TOKEN: ${{ env.QASE_TESTOPS_API_TOKEN }}
-
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18" # Use the version of Node.js you need
+          node-version: "18"
           cache: "npm"
 
-      - name: Install dependencies
+      - name: Install project dependencies
         run: |
           npm install
 
-      - name: Run Playwright tests
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "1.21"
+
+      - name: Install Qase CLI
         run: |
-          npm test
+          go install github.com/qase-tms/qasectl@latest
+          echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
+
+      - name: Run Playwright tests and generate JUnit XML
+        run: |
+          npx playwright test --reporter=junit --output=playwright-report
+
+      - name: Upload Playwright JUnit results to Qase
+        run: |
+          qli testops result upload \
+          --project $QASE_PROJECT_CODE \
+          --token $QASE_API_TOKEN \
+          --id $QASE_RUN_ID \
+          --format junit \
+          --path "playwright-report/results.xml" \
+          --verbose
+        env:
+          QASE_API_TOKEN: ${{ secrets.QASE_API_TOKEN }}
