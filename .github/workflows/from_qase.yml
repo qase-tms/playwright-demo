@@ -63,7 +63,7 @@ jobs:
 
       - name: Merge JUnit XMLs
         run: |
-          npx junit-merge "playwright-report/**/*.xml" -o "playwright-report/results.xml"
+          npx junit-merge "playwright-report/*/*.xml" -o "playwright-report/results.xml"
 
       - name: Upload Playwright JUnit results to Qase
         run: |
