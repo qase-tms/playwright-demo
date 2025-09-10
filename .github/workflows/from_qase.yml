@@ -55,7 +55,11 @@ jobs:
 
       - name: Run Playwright tests and generate JUnit XML
         run: |
-          npx playwright test --reporter=junit --output=playwright-report/results.xml
+          npx playwright test --reporter=junit --output=playwright-report
+
+      - name: List test results
+        run: |
+          ls -R playwright-report
 
       - name: Upload Playwright JUnit results to Qase
         run: |
