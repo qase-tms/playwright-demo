@@ -53,6 +53,9 @@ jobs:
           echo "$(go env GOPATH)/bin" >> $GITHUB_PATH
           echo "alias qli='qasectl'" >> $GITHUB_ENV
 
+      - name: Create report folder
+        run: mkdir -p playwright-report
+
       - name: Run Playwright tests and generate JUnit XML
         run: |
           npx playwright test --reporter=junit --output=playwright-report
