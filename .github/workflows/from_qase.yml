@@ -58,7 +58,7 @@ jobs:
 
       - name: Run Playwright tests and generate JUnit XML
         run: |
-          npx playwright test tests/examples/comment.spec.js --reporter=junit --output=playwright-report
+          npx playwright test tests/examples/comment.spec.js
 
       - name: List test results
         run: |
