@@ -2,10 +2,14 @@ name: Qase Reporter - Multiple Runs (Incorrect Setup)
 
 on:
   workflow_dispatch:
-  push:
-    branches: [ sharding ]
-  pull_request:
-    branches: [ sharding ]
+    inputs:
+      branch:
+        description: 'Branch to run tests on'
+        required: true
+        default: 'sharding'
+        type: choice
+        options:
+          - sharding
 
 jobs:
   test:
@@ -17,6 +21,8 @@ jobs:
         shard: [1, 2, 3, 4]
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.branch }}
     
     - uses: actions/setup-node@v4
       with:
