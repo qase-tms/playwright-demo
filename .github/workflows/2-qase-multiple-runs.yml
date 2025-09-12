@@ -1,0 +1,51 @@
+name: Qase Reporter - Multiple Runs (Incorrect Setup)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ sharding ]
+  pull_request:
+    branches: [ sharding ]
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    steps:
+    - uses: actions/checkout@v4
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+      
+    - name: Run Playwright tests with Qase Reporter
+      run: npx playwright test --config=playwright.qase.config.js --shard=${{ matrix.shard }}/4
+      env:
+        CI: true
+        SHARD: true
+        SHARD_CURRENT: ${{ matrix.shard }}
+        SHARD_TOTAL: 4
+        # Qase configuration - each shard will create its own test run
+        QASE_MODE: testops
+        QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
+        QASE_TESTOPS_PROJECT: ${{ secrets.QASE_TESTOPS_PROJECT }}
+        # Note: No QASE_TESTOPS_RUN_ID specified, so each shard creates a new run
+        # Note: QASE_TESTOPS_RUN_COMPLETE defaults to true, so each shard completes its run
+        
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-shard-${{ matrix.shard }}
+        path: test-results/
+        retention-days: 7

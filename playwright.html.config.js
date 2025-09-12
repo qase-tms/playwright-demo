@@ -10,42 +10,8 @@ export default defineConfig({
     total: parseInt(process.env.SHARD_TOTAL || '1') 
   } : undefined,
 
-  reporter: [
-    ["list"],
-    [
-      "playwright-qase-reporter",
-      {
-        environment: "prod",
-
-        // If you use playwright projects, use these options to pass them as parameters.
-        framework: {
-          browser: {
-            addAsParameter: true,
-            parameterName: "Browser",
-          },
-        },
-        /*
-        // You can define the reporter options here, or in a separate `qase.config.json` file.
-        mode: 'testops',
-        debug: false,
-        testops: {
-          api: {
-            token: 'api_key',
-          },
-          project: 'project_code',
-          uploadAttachments: true,
-          run: {
-          //  id: 1,
-            title: `Regression run - ${new Date().toISOString()}`,
-            description: "Automated Test run by Playwright",
-            complete: true,
-          },
-          environment: 'prod',
-        },
-      */
-      },
-    ],
-  ],
+  // Use blob reporter for sharding, HTML for final report
+  reporter: [["blob"], ["list"]],
 
   projects: [
     {

@@ -24,25 +24,6 @@ export default defineConfig({
             parameterName: "Browser",
           },
         },
-        /*
-        // You can define the reporter options here, or in a separate `qase.config.json` file.
-        mode: 'testops',
-        debug: false,
-        testops: {
-          api: {
-            token: 'api_key',
-          },
-          project: 'project_code',
-          uploadAttachments: true,
-          run: {
-          //  id: 1,
-            title: `Regression run - ${new Date().toISOString()}`,
-            description: "Automated Test run by Playwright",
-            complete: true,
-          },
-          environment: 'prod',
-        },
-      */
       },
     ],
   ],
