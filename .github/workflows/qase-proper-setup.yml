@@ -22,7 +22,7 @@ jobs:
       uses: qase-tms/qase-link-run@v1
       with:
         api-token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
-        project-code: ${{ secrets.QASE_TESTOPS_PROJECT }}
+        project-code: ${{ vars.QASE_TESTOPS_PROJECT }}
         run-title: "Sharded Test Run - ${{ github.run_number }} (${{ inputs.branch }})"
         run-description: "Automated test run with proper sharding setup - Run #${{ github.run_number }} on branch ${{ inputs.branch }}"
         
@@ -30,7 +30,7 @@ jobs:
     # - name: Create Qase Test Run (Alternative with curl)
     #   id: create-run-curl
     #   run: |
-    #     RESPONSE=$(curl -X POST "https://api.qase.io/v1/run/${{ secrets.QASE_TESTOPS_PROJECT }}" \
+    #     RESPONSE=$(curl -X POST "https://api.qase.io/v1/run/${{ vars.QASE_TESTOPS_PROJECT }}" \
     #       -H "Token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}" \
     #       -H "Content-Type: application/json" \
     #       -d '{
@@ -73,7 +73,7 @@ jobs:
         # Qase configuration for proper sharding
         QASE_MODE: testops
         QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
-        QASE_TESTOPS_PROJECT: ${{ secrets.QASE_TESTOPS_PROJECT }}
+        QASE_TESTOPS_PROJECT: ${{ vars.QASE_TESTOPS_PROJECT }}
         QASE_TESTOPS_RUN_ID: ${{ needs.create-test-run.outputs.run-id }}
         QASE_TESTOPS_RUN_COMPLETE: false  # Don't complete the run after each shard
         
@@ -94,13 +94,13 @@ jobs:
       uses: qase-tms/qase-link-run@v1
       with:
         api-token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
-        project-code: ${{ secrets.QASE_TESTOPS_PROJECT }}
+        project-code: ${{ vars.QASE_TESTOPS_PROJECT }}
         run-id: ${{ needs.create-test-run.outputs.run-id }}
         run-complete: true
         
     # Alternative: Complete test run using curl (commented out)
     # - name: Complete Qase Test Run (Alternative with curl)
     #   run: |
-    #     curl -X PATCH "https://api.qase.io/v1/run/${{ secrets.QASE_TESTOPS_PROJECT }}/${{ needs.create-test-run.outputs.run-id }}/complete" \
+    #     curl -X PATCH "https://api.qase.io/v1/run/${{ vars.QASE_TESTOPS_PROJECT }}/${{ needs.create-test-run.outputs.run-id }}/complete" \
     #       -H "Token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}" \
     #       -H "Content-Type: application/json"
