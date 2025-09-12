@@ -17,14 +17,15 @@ jobs:
     outputs:
       run-id: ${{ steps.create-run.outputs.run-id }}
     steps:
-    - name: Create Qase Test Run
+    - name: Create a Qase test run
+      uses: qase-tms/gh-actions/run-create@v1
       id: create-run
-      uses: qase-tms/qase-link-run@v1
       with:
-        api-token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
-        project-code: ${{ vars.QASE_TESTOPS_PROJECT }}
-        run-title: "Sharded Test Run - ${{ github.run_number }} (${{ inputs.branch }})"
-        run-description: "Automated test run with proper sharding setup - Run #${{ github.run_number }} on branch ${{ inputs.branch }}"
+        token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
+        project: ${{ vars.QASE_TESTOPS_PROJECT }}
+        title: "Sharded Test Run - ${{ github.run_number }} (${{ inputs.branch }})"
+        description: "Automated test run with proper sharding setup - Run #${{ github.run_number }} on branch ${{ inputs.branch }}"
+        environment: prod
         
     # Alternative: Create test run using curl
     # - name: Create Qase Test Run (Alternative with curl)
@@ -91,12 +92,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Complete Qase Test Run
-      uses: qase-tms/qase-link-run@v1
+      uses: qase-tms/gh-actions/run-create@v1
       with:
-        api-token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
-        project-code: ${{ vars.QASE_TESTOPS_PROJECT }}
-        run-id: ${{ needs.create-test-run.outputs.run-id }}
-        run-complete: true
+        token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
+        project: ${{ vars.QASE_TESTOPS_PROJECT }}
+        id: ${{ needs.create-test-run.outputs.run-id }}
         
     # Alternative: Complete test run using curl (commented out)
     # - name: Complete Qase Test Run (Alternative with curl)
