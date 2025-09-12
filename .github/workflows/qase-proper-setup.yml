@@ -92,7 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Complete Qase Test Run
-      uses: qase-tms/gh-actions/run-create@v1
+      uses: qase-tms/gh-actions/run-complete@v1
       with:
         token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
         project: ${{ vars.QASE_TESTOPS_PROJECT }}
