@@ -15,7 +15,7 @@ jobs:
   create-test-run:
     runs-on: ubuntu-latest
     outputs:
-      run-id: ${{ steps.create-run.outputs.run-id }}
+      run-id: ${{ steps.create-run.outputs.id }}
     steps:
     - name: Create a Qase test run
       uses: qase-tms/gh-actions/run-create@v1
@@ -75,7 +75,7 @@ jobs:
         QASE_MODE: testops
         QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
         QASE_TESTOPS_PROJECT: ${{ vars.QASE_TESTOPS_PROJECT }}
-        QASE_TESTOPS_RUN_ID: ${{ needs.create-test-run.outputs.id }}
+        QASE_TESTOPS_RUN_ID: ${{ needs.create-test-run.outputs.run-id }}
         QASE_TESTOPS_RUN_COMPLETE: false  # Don't complete the run after each shard
         
     - name: Upload test results
