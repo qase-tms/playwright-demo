@@ -2,19 +2,19 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   reporter: [
-    ['list'],
+    ["list"],
     [
       "playwright-qase-reporter",
       {
-        environment: "prod"
+        environment: "prod",
 
         // If you use playwright projects, use these options to pass them as parameters.
         framework: {
           browser: {
             addAsParameter: true,
-            parameterName: 'Browser',
-          }
-        }
+            parameterName: "Browser",
+          },
+        },
         /*
         // You can define the reporter options here, or in a separate `qase.config.json` file.
         mode: 'testops',
