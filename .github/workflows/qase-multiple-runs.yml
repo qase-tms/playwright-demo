@@ -9,7 +9,7 @@ on:
         default: 'docs/sharding'
         type: choice
         options:
-          - sharding
+          - docs/sharding
 
 jobs:
   test:
