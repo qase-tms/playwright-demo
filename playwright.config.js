@@ -21,9 +21,9 @@ export default defineConfig({
         debug: false,
         testops: {
           api: {
-            token: '48c887580c1d38e0c8e03550f626a3f45bd51e955fe5bdd1cdd2637d5992d229',
+            token: '<Token>',
           },
-          project: 'PARAM1',
+          project: '<Project code>',
           uploadAttachments: true,
           run: {
           //  id: 1,
