@@ -15,15 +15,15 @@ export default defineConfig({
             parameterName: "Browser",
           },
         },
-        /*
-        // You can define the reporter options here, or in a separate `qase.config.json` file.
+        
+        
         mode: 'testops',
         debug: false,
         testops: {
           api: {
-            token: 'api_key',
+            token: '48c887580c1d38e0c8e03550f626a3f45bd51e955fe5bdd1cdd2637d5992d229',
           },
-          project: 'project_code',
+          project: 'PARAM1',
           uploadAttachments: true,
           run: {
           //  id: 1,
@@ -33,13 +33,12 @@ export default defineConfig({
           },
           environment: 'prod',
         },
-      */
       },
     ],
   ],
 
-  /*
-  projects: [
+  
+  /*projects: [
     {
       name: "Chromium",
       use: {
@@ -77,12 +76,11 @@ export default defineConfig({
         bypassCSP: true,
       },
     },
-  ],
+  ],*/
   use: {
     screenshot: "only-on-failure", // options: 'on', 'off', 'only-on-failure'
     video: "on", // options: 'on', 'off', 'on-first-retry'
     viewport: { width: 1280, height: 720 },
   },
-  */
   outputDir: "test-results/",
 });
