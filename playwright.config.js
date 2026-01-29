@@ -18,12 +18,12 @@ export default defineConfig({
         
         
         mode: 'testops',
-        debug: false,
+        debug: true,
         testops: {
           api: {
-            token: '<Token>',
+            token: '48c887580c1d38e0c8e03550f626a3f45bd51e955fe5bdd1cdd2637d5992d229',
           },
-          project: '<Project code>',
+          project: 'PARAM1',
           uploadAttachments: true,
           run: {
           //  id: 1,
