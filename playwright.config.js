@@ -1,6 +1,7 @@
 import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
+  retries: 1,
   reporter: [
     ["list"],
     [
@@ -10,6 +11,7 @@ export default defineConfig({
 
         // If you use playwright projects, use these options to pass them as parameters.
         framework: {
+          markAsFlaky: true,
           browser: {
             addAsParameter: true,
             parameterName: "Browser",
