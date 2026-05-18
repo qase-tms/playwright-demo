@@ -1,0 +1,24 @@
+playwright.config.js
+  s_1f687e923392de::t_ee4b84f28180ab 32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "a055974185c8dc63d20e99127f0525422e1e52e5",
+  "prompts": {},
+  "humans": {
+    "h_cfb642ecaccda9": {
+      "author": "rmontemor-qase <rmontemor@qase.io>"
+    }
+  },
+  "sessions": {
+    "s_1f687e923392de": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3cfdd6d-0db2-4719-b807-5e08839104c2",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "rmontemor-qase <rmontemor@qase.io>"
+    }
+  }
+}
