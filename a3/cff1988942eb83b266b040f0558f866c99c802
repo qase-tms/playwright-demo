@@ -1,0 +1,14 @@
+tests/full-regression.spec.js
+  h_cfb642ecaccda9 27,245,624,900,1199,1408,1597,1746,1896
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "a3cff1988942eb83b266b040f0558f866c99c802",
+  "prompts": {},
+  "humans": {
+    "h_cfb642ecaccda9": {
+      "author": "rmontemor-qase <rmontemor@qase.io>"
+    }
+  }
+}
