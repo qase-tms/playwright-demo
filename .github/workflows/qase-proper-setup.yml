@@ -1,0 +1,106 @@
+name: Qase Reporter - Proper Sharding Setup
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to run tests on'
+        required: true
+        default: 'docs/sharding'
+        type: choice
+        options:
+          - docs/sharding
+
+jobs:
+  create-test-run:
+    runs-on: ubuntu-latest
+    outputs:
+      run-id: ${{ steps.create-run.outputs.id }}
+    steps:
+    - name: Create a Qase test run
+      uses: qase-tms/gh-actions/run-create@v1
+      id: create-run
+      with:
+        token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
+        project: ${{ vars.QASE_TESTOPS_PROJECT }}
+        title: "Sharded Test Run - ${{ github.run_number }} (${{ inputs.branch }})"
+        description: "Automated test run with proper sharding setup - Run #${{ github.run_number }} on branch ${{ inputs.branch }}"
+        environment: prod
+        
+    # Alternative: Create test run using curl
+    # - name: Create Qase Test Run (Alternative with curl)
+    #   id: create-run-curl
+    #   run: |
+    #     RESPONSE=$(curl -X POST "https://api.qase.io/v1/run/${{ vars.QASE_TESTOPS_PROJECT }}" \
+    #       -H "Token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}" \
+    #       -H "Content-Type: application/json" \
+    #       -d '{
+    #         "title": "Sharded Test Run - ${{ github.run_number }} (${{ inputs.branch }})",
+    #         "description": "Automated test run with proper sharding setup - Run #${{ github.run_number }} on branch ${{ inputs.branch }}"
+    #       }')
+    #     RUN_ID=$(echo $RESPONSE | jq -r '.result.id')
+    #     echo "run-id=$RUN_ID" >> $GITHUB_OUTPUT
+
+  test:
+    needs: create-test-run
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ inputs.branch }}
+    
+    - uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+        
+    - name: Install dependencies
+      run: npm ci
+      
+    - name: Install Playwright Browsers
+      run: npx playwright install --with-deps
+      
+    - name: Run Playwright tests with Qase Reporter
+      run: npx playwright test --config=playwright.qase.config.js --shard=${{ matrix.shard }}/4
+      env:
+        CI: true
+        SHARD: true
+        SHARD_CURRENT: ${{ matrix.shard }}
+        SHARD_TOTAL: 4
+        # Qase configuration for proper sharding
+        QASE_MODE: testops
+        QASE_TESTOPS_API_TOKEN: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
+        QASE_TESTOPS_PROJECT: ${{ vars.QASE_TESTOPS_PROJECT }}
+        QASE_TESTOPS_RUN_ID: ${{ needs.create-test-run.outputs.run-id }}
+        QASE_TESTOPS_RUN_COMPLETE: false  # Don't complete the run after each shard
+        
+    - name: Upload test results
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: test-results-shard-${{ matrix.shard }}
+        path: test-results/
+        retention-days: 7
+
+  complete-test-run:
+    if: always()
+    needs: [create-test-run, test]
+    runs-on: ubuntu-latest
+    steps:
+    - name: Complete Qase Test Run
+      uses: qase-tms/gh-actions/run-complete@v1
+      with:
+        token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}
+        project: ${{ vars.QASE_TESTOPS_PROJECT }}
+        id: ${{ needs.create-test-run.outputs.run-id }}
+        
+    # Alternative: Complete test run using curl (commented out)
+    # - name: Complete Qase Test Run (Alternative with curl)
+    #   run: |
+    #     curl -X PATCH "https://api.qase.io/v1/run/${{ vars.QASE_TESTOPS_PROJECT }}/${{ needs.create-test-run.outputs.run-id }}/complete" \
+    #       -H "Token: ${{ secrets.QASE_TESTOPS_API_TOKEN }}" \
+    #       -H "Content-Type: application/json"
