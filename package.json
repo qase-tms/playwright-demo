@@ -25,10 +25,10 @@
   "devDependencies": {
     "@playwright/test": "^1.49.1",
     "dotenv": "^16.4.7",
-    "playwright-qase-reporter": "^2.5.5",
+    "playwright-qase-reporter": "^2.6.0",
     "prettier": "^3.4.2"
   },
   "dependencies": {
-    "qase-javascript-commons": "^2.7.5"
+    "qase-javascript-commons": "^2.8.0"
   }
 }
