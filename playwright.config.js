@@ -22,7 +22,7 @@ export default defineConfig({
         debug: true,
         testops: {
           api: {
-            token: 'ece251fb4acd3ed8eac9e55dc0bf66b4fac1559efc6a86ffd9ff78f8c3e1e4d0',
+            token: '<token>',
           },
           batch: {
             size: 400
