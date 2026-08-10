@@ -1,0 +1,50 @@
+.github/workflows/combined.yml
+  h_ca615df2b152cf 1-60
+.github/workflows/from_qase.yml
+  h_ca615df2b152cf 1-52
+.github/workflows/on_push.yml
+  h_ca615df2b152cf 1-46
+.github/workflows/qase-multiple-runs.yml
+  h_ca615df2b152cf 1-57
+.github/workflows/qase-proper-setup.yml
+  h_ca615df2b152cf 1-106
+.github/workflows/standard-sharding.yml
+  h_ca615df2b152cf 1-84
+.gitignore
+  h_ca615df2b152cf 1-142
+FAQ/fetch-test-run-id-of-ongoing-run.md
+  h_ca615df2b152cf 1-56
+FAQ/projects-result-in-duplicate-cases.md
+  h_ca615df2b152cf 1-41
+FAQ/test.skip-creates-new-test-case.md
+  h_ca615df2b152cf 1-36
+LICENSE
+  h_ca615df2b152cf 1-24
+README.md
+  h_ca615df2b152cf 1-31
+package-lock.json
+  h_ca615df2b152cf 1-741
+package.json
+  h_ca615df2b152cf 1-34
+playwright.config.js
+  h_ca615df2b152cf 1-89
+tests/examples/attach.spec.js
+  h_ca615df2b152cf 1-68
+tests/examples/captureLogs/stderr.spec.js
+  h_ca615df2b152cf 1-18
+tests/examples/captureLogs/stdout.spec.js
+  h_ca615df2b152cf 1-18
+tests/examples/markdownContent.js
+  h_ca615df2b152cf 1-111
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "529a9ecf19f3d554b6d529518f2201ba61d2a870",
+  "prompts": {},
+  "humans": {
+    "h_ca615df2b152cf": {
+      "author": "Ankita Dasgupta <ankitadasgupta@Ankitas-MacBook-Air.local>"
+    }
+  }
+}
