@@ -1,0 +1,14 @@
+playwright.config.js
+  h_cfb642ecaccda9 35
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "8441427fba885102093f6a80991cec0c59938e66",
+  "prompts": {},
+  "humans": {
+    "h_cfb642ecaccda9": {
+      "author": "rmontemor-qase <rmontemor@qase.io>"
+    }
+  }
+}

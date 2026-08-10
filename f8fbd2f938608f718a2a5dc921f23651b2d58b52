@@ -1,0 +1,38 @@
+tests/full-regression.spec.js
+  s_1f687e923392de::t_bbbbf868052335 3
+  s_1f687e923392de::t_60085b83ae4347 185,187-190
+  s_1f687e923392de::t_88d493cee66f2f 629,631-634
+  s_1f687e923392de::t_fc0e8b46678778 368,370-373
+  s_1f687e923392de::t_ab12f677d5ef19 22,24-27
+  s_1f687e923392de::t_85a39764854fea 563,565-568
+  s_1f687e923392de::t_da0dabaf7b4f07 86,88-91
+  s_1f687e923392de::t_f4efd4702f8ab0 265,267-270
+  s_1f687e923392de::t_927bb6d6ce12b0 441,443-446
+  s_1f687e923392de::t_115eecffe7047d 506,508-511
+tests/core-regression.spec.js
+  s_1f687e923392de::t_a2267b8bd8092b 238-241
+  s_1f687e923392de::t_78c992db93cfb4 274-277
+  s_1f687e923392de::t_2f07a76068e46e 158-161
+  s_1f687e923392de::t_cb3646d2092184 15-18
+  s_1f687e923392de::t_33ea075e52dba6 79-82
+  s_1f687e923392de::t_4939bba411c667 215-218
+  s_1f687e923392de::t_b5eaee7ce6ce40 252-255
+playwright.config.js
+  s_1f687e923392de::t_6fdcee66bb4924 32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.1",
+  "base_commit_sha": "f8fbd2f938608f718a2a5dc921f23651b2d58b52",
+  "prompts": {},
+  "sessions": {
+    "s_1f687e923392de": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f3cfdd6d-0db2-4719-b807-5e08839104c2",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "rmontemor-qase <rmontemor@qase.io>"
+    }
+  }
+}
