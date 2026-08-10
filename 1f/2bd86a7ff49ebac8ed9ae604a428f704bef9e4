@@ -1,0 +1,16 @@
+package.json
+  h_ca615df2b152cf 28,32
+package-lock.json
+  h_ca615df2b152cf 12,17,104-106,110,309-311,345-347,353-354,590-592,596,631-633,644-646,649,657-659,666,671
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "1f2bd86a7ff49ebac8ed9ae604a428f704bef9e4",
+  "prompts": {},
+  "humans": {
+    "h_ca615df2b152cf": {
+      "author": "Ankita Dasgupta <ankitadasgupta@Ankitas-MacBook-Air.local>"
+    }
+  }
+}
